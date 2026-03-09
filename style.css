@@ -1,0 +1,184 @@
+/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+    --bg-crema: #FCFBF9;
+    --texto-carbon: #2C2C2C;
+    --verde-salvia: #9CA986;
+    --terracota: #C87A61;
+    --dorado: #D4AF37;
+    --blanco: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-crema);
+    color: var(--texto-carbon);
+    line-height: 1.6;
+}
+
+h1, h2, h3, .logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+}
+
+/* Navegación */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 5%;
+    background-color: var(--bg-crema);
+}
+
+.logo {
+    font-size: 1.8rem;
+    color: var(--texto-carbon);
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--texto-carbon);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--verde-salvia);
+}
+
+/* Botones */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: var(--verde-salvia);
+    color: var(--blanco);
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--terracota);
+}
+
+/* Hero Section */
+.hero {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    /* Aquí irá la imagen de fondo más adelante */
+    background: linear-gradient(rgba(252, 251, 249, 0.8), rgba(252, 251, 249, 0.9)), url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    max-width: 800px;
+    color: var(--texto-carbon);
+}
+
+.hero p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+/* Secciones Generales */
+section {
+    padding: 6rem 5%;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--texto-carbon);
+}
+
+.section-subtitle {
+    max-width: 700px;
+    margin: 0 auto 4rem auto;
+    font-weight: 300;
+    color: #555;
+}
+
+/* Grid de Servicios */
+.servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.servicio-card {
+    background: var(--blanco);
+    padding: 3rem 2rem;
+    border-top: 4px solid var(--verde-salvia);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease;
+}
+
+.servicio-card:hover {
+    transform: translateY(-5px);
+}
+
+.servicio-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.servicio-card p {
+    font-size: 0.95rem;
+    color: #666;
+}
+
+/* Footer */
+footer {
+    background-color: var(--texto-carbon);
+    color: var(--blanco);
+    padding: 4rem 5%;
+    text-align: center;
+}
+
+footer h2 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+footer .btn {
+    background-color: transparent;
+    border: 1px solid var(--blanco);
+    margin-top: 2rem;
+}
+
+footer .btn:hover {
+    background-color: var(--blanco);
+    color: var(--texto-carbon);
+}
