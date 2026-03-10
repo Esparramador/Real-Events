@@ -3,35 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Próximamente | Real Events Boutique</title>
+    <title>Tienda | Real Events</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        body { background-color: #E8D5CB; /* Naranja melocotón del logo */ }
-        .coming-soon { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem; }
-    </style>
 </head>
 <body>
-    <div class="coming-soon">
-        <a href="index.html" style="margin-bottom: 2rem; display: inline-block;">
-            <img src="logo.png" alt="Logo Real Events by Amal" style="height: 100px; width: auto; object-fit: contain;">
-        </a>
-        <h1 style="font-size: 4rem; color: var(--texto-carbon); margin-bottom: 1rem; font-family: 'Playfair Display', serif;">Algo mágico está en camino...</h1>
-        <p style="font-size: 1.2rem; max-width: 600px; margin-bottom: 3rem; color: #444; font-family: 'Montserrat', sans-serif;">Muy pronto abriremos la Boutique de Real Events. Todo lo necesario para llevar nuestra esencia a tu celebración.</p>
-        
-        <ul style="list-style: none; font-size: 1.1rem; text-align: left; margin-bottom: 3rem; color: #444; font-family: 'Montserrat', sans-serif;">
-            <li style="margin-bottom: 10px;">✨ Papelería de boda (Roll Up's, pósters, minutas)</li>
-            <li style="margin-bottom: 10px;">🎬 Vídeos Love Story (Vuestra historia, de película)</li>
-            <li style="margin-bottom: 10px;">💍 Figuras 3D personalizadas para la tarta</li>
-            <li>🎁 Merchandising y detalles exclusivos</li>
+    <nav>
+        <a href="index.html" class="logo-link"><img src="logo.png" alt="Logo" class="logo-img"></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="sobre-mi.html">Sobre Amal</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="portfolio.html">Bodas Reales</a></li>
+            <li><a href="contacto.html" class="btn">Contacto</a></li>
         </ul>
+    </nav>
 
-        <div style="background: var(--blanco); padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-            <p style="margin-bottom: 1rem; font-weight: 500; font-family: 'Montserrat', sans-serif;">Déjanos tu email y sé la primera en acceder con un regalo exclusivo.</p>
-            <input type="email" placeholder="Tu correo electrónico" style="padding: 12px; width: 250px; border: 1px solid #ccc; border-radius: 4px; margin-right: 10px; font-family: 'Montserrat', sans-serif;">
-            <button class="btn">¡Avísame en la apertura!</button>
-        </div>
-        <a href="index.html" style="margin-top: 2rem; color: var(--texto-carbon); text-decoration: underline; font-family: 'Montserrat', sans-serif;">Volver al inicio</a>
-    </div>
+    <section style="padding: 8rem 5%; text-align: center; min-height: 60vh;">
+        <h1 id="shop-title" style="font-family: 'Playfair Display', serif; font-size: 3rem; color: #9CA986;">Cargando...</h1>
+        <div id="shop-message" style="max-width: 600px; margin: 2rem auto; font-size: 1.2rem; color: #666;"></div>
+    </section>
+
+    <footer>
+        <h2 class="footer-brand">Real Events</h2>
+        <p class="footer-byline">by Amal</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        fetch('tienda.json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('shop-title').innerText = data.title;
+                document.getElementById('shop-message').innerHTML = marked.parse(data.message || '');
+            })
+            .catch(error => console.log('Publica la página de Tienda en el admin para verla.'));
+    </script>
 </body>
 </html>
-
