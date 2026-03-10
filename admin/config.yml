@@ -1,0 +1,45 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "blog"
+    label: "Blog (Artículos)"
+    folder: "blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Título", name: "title", widget: "string"}
+      - {label: "Fecha", name: "date", widget: "datetime"}
+      - {label: "Imagen de Portada", name: "featured_image", widget: "image"}
+      - {label: "Cuerpo del artículo", name: "body", widget: "markdown"}
+
+  - name: "paginas"
+    label: "Editar Páginas"
+    files:
+      - file: "index.html"
+        label: "Página de Inicio"
+        name: "home"
+        fields:
+          - {label: "Título Principal", name: "title_h1", widget: "string"}
+          - {label: "Subtítulo Hero", name: "hero_sub", widget: "text"}
+          - {label: "Texto Botón Principal", name: "cta_text", widget: "string"}
+          - {label: "Imagen de Fondo", name: "hero_bg", widget: "image"}
+      
+      - file: "sobre-mi.html"
+        label: "Página Sobre Mí"
+        name: "about"
+        fields:
+          - {label: "Título Página", name: "title", widget: "string"}
+          - {label: "Tu Texto de Presentación", name: "bio_text", widget: "markdown"}
+          - {label: "Tu Foto", name: "profile_img", widget: "image"}
+
+      - file: "tienda.html"
+        label: "Página Tienda (Próximamente)"
+        name: "shop"
+        fields:
+          - {label: "Título Anuncio", name: "promo_title", widget: "string"}
+          - {label: "Descripción", name: "promo_desc", widget: "text"}
