@@ -3,59 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><img src="logo.png" alt="Logo Real Events" class="logo-img">| Wedding Planner & Designer</title>
-    <meta name="description" content="Wedding Planner & Designer de lujo accesible. Transformamos tus ideas en celebraciones inolvidables.">
+    <title><img src="logo.png" alt="Logo Real Events" class="logo-img"> | Wedding Designer</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="logo">Real Events <span>by Amal</span></a>
+        <a href="index.html" class="logo-link">
+            <img src="logo.png" alt="Logo Real Events" class="logo-img">
+        </a>
         <ul class="nav-links">
             <li><a href="index.html">Inicio</a></li>
-            <li><a href="sobre-mi.html">Conoce a Amal</a></li>
+            <li><a href="sobre-mi.html">Sobre Amal</a></li>
             <li><a href="servicios.html">Servicios</a></li>
             <li><a href="tienda.html">Tienda</a></li>
             <li><a href="contacto.html" class="btn">Contacto</a></li>
         </ul>
     </nav>
 
-    <header class="hero">
+    <header class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/hero-bg.jpg');">
         <div class="hero-content">
-            <h1>Diseñamos tu boda con encanto y estilo.</h1>
-            <p>En Real Events transformamos tus ideas en celebraciones inolvidables. Nos encargamos del estrés y de cada mínimo detalle para que tú solo te preocupes de disfrutar.</p>
-            <a href="contacto.html" class="btn">Agenda tu cita con Amal</a>
+            <h1>Diseñamos eventos con alma</h1>
+            <p>Elegancia, lujo y exclusividad en cada detalle de tu gran día.</p>
+            <a href="contacto.html" class="btn">Reserva tu fecha</a>
         </div>
     </header>
 
-    <section id="por-que">
-        <h2 class="section-title">Detalles que dan el look de lujo</h2>
-        <p class="section-subtitle">(sin subir tu presupuesto)</p>
-        <p style="max-width: 800px; margin: 0 auto; font-size: 1.1rem; color: #555;">Creemos que la magia reside en el equilibrio perfecto entre una organización milimétrica y un diseño estético impecable.</p>
-    </section>
-
-    <section id="servicios">
-        <div class="servicios-grid">
-            <div class="servicio-card">
-                <h3>Organización Integral</h3>
-                <p>"Desde el primer boceto hasta el último baile."</p>
-            </div>
-            <div class="servicio-card">
-                <h3>Wedding Design & Styling</h3>
-                <p>"Decoración, flores e iluminación que cuentan vuestra historia."</p>
-            </div>
-            <div class="servicio-card">
-                <h3>Bodas Temáticas</h3>
-                <p>"Fusionamos culturas, tradiciones y estética. Especialistas en multiculturalidad."</p>
+    <section class="about-preview">
+        <div class="container">
+            <h2>Nuestra Esencia</h2>
+            <div class="esencia-text">
+                <p>En Real Events transformamos sueños en realidades tangibles. Cada boda es una historia única que merece ser contada con sofisticación.</p>
             </div>
         </div>
     </section>
 
     <footer>
-        <h2>Inspiración diaria</h2>
-        <p>Descubre nuestros últimos montajes y diseños.</p>
+        <h2 class="footer-brand">Real Events</h2>
+        <p class="footer-byline">by Amal</p>
         <a href="https://instagram.com/real_events" target="_blank" class="btn">Síguenos en Instagram</a>
     </footer>
 
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
 </body>
 </html>
