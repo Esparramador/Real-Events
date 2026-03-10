@@ -3,20 +3,70 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Panel de Administración | Real Events</title>
+  <title>Admin | Real Events</title>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 
   <script>
+    // 1. PREVIEW DE LA HOME
+    var HomePreview = createClass({
+      render: function() {
+        var entry = this.props.entry;
+        var bgImage = this.props.getAsset(entry.getIn(['data', 'hero_bg']));
+        var logoImage = this.props.getAsset(entry.getIn(['data', 'logo']));
+
+        return h('div', {style: {fontFamily: "'Montserrat', sans-serif"}},
+          h('nav', {style: {padding: '1rem', backgroundColor: '#FCFBF9'}},
+            h('img', {src: logoImage ? logoImage.toString() : '', style: {height: '60px'}})
+          ),
+          h('header', {style: {
+            height: '60vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center',
+            background: bgImage ? "linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('" + bgImage.toString() + "') center/cover" : '#eee'
+          }},
+            h('h1', {style: {fontFamily: "'Playfair Display', serif", fontSize: '3rem', color: '#fff'}}, entry.getIn(['data', 'hero_title'])),
+            h('p', {style: {color: '#fff', fontSize: '1.2rem', maxWidth: '600px'}}, entry.getIn(['data', 'hero_sub'])),
+            h('button', {style: {padding: '10px 20px', background: '#9CA986', color: '#fff', border: 'none'}}, entry.getIn(['data', 'cta_text']))
+          ),
+          h('section', {style: {padding: '4rem 2rem', textAlign: 'center'}},
+            h('h2', {style: {fontFamily: "'Playfair Display', serif", fontSize: '2rem'}}, entry.getIn(['data', 'about_title'])),
+            h('div', {}, this.props.widgetFor('about_desc'))
+          )
+        );
+      }
+    });
+
+    // 2. PREVIEW DE LA GALERÍA DE EVENTOS
+    var EventoPreview = createClass({
+      render: function() {
+        var entry = this.props.entry;
+        var cover = this.props.getAsset(entry.getIn(['data', 'thumbnail']));
+        var galeria = entry.getIn(['data', 'galeria']);
+
+        return h('div', {style: {fontFamily: "'Montserrat', sans-serif", padding: '2rem'}},
+          h('h1', {style: {fontFamily: "'Playfair Display', serif", color: '#C87A61'}}, entry.getIn(['data', 'title'])),
+          h('p', {style: {color: '#666'}}, "Tipo: " + entry.getIn(['data', 'tipo']) + " | Fecha: " + (entry.getIn(['data', 'date']) ? entry.getIn(['data', 'date']).toString() : '')),
+          h('img', {src: cover ? cover.toString() : '', style: {width: '100%', maxHeight: '400px', objectFit: 'cover', borderRadius: '8px', marginTop: '1rem'}}),
+          h('div', {style: {marginTop: '2rem'}}, this.props.widgetFor('body')),
+          h('h3', {style: {marginTop: '2rem'}}, "Galería de Fotos:"),
+          h('div', {style: {display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px'}}, 
+            galeria ? galeria.map(function(item, index) {
+              var fotoAsset = this.props.getAsset(item.get('foto'));
+              return h('img', {key: index, src: fotoAsset ? fotoAsset.toString() : '', style: {width: '100%', borderRadius: '4px'}})
+            }.bind(this)) : null
+          )
+        );
+      }
+    });
+
+    CMS.registerPreviewTemplate("home", HomePreview);
+    CMS.registerPreviewTemplate("eventos", EventoPreview);
+
+    // Redirección Login
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
+        if (!user) { window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; }); }
       });
     }
   </script>
