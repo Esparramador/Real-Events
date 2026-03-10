@@ -6,40 +6,71 @@ media_folder: "images"
 public_folder: "/images"
 
 collections:
+  - name: "home"
+    label: "Página de Inicio"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - file: "index.html"
+        label: "Contenido Home"
+        name: "home_content"
+        fields:
+          - {label: "Título Principal (H1)", name: "title_h1", widget: "string"}
+          - {label: "Subtítulo Hero", name: "hero_sub", widget: "text"}
+          - {label: "Texto Botón Principal", name: "cta_text", widget: "string"}
+          - {label: "Imagen de Fondo Hero", name: "hero_bg", widget: "image"}
+          - {label: "Título Sección Lujo", name: "lujo_title", widget: "string"}
+          - {label: "Texto Esencia", name: "esencia_text", widget: "text"}
+
+  - name: "servicios"
+    label: "Servicios"
+    delete: false
+    files:
+      - file: "servicios.html"
+        label: "Editar Servicios"
+        name: "servicios_list"
+        fields:
+          - {label: "Título Página", name: "title", widget: "string"}
+          - label: "Lista de Servicios"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "Nombre del Servicio", name: "nombre", widget: "string"}
+              - {label: "Descripción", name: "desc", widget: "text"}
+              - {label: "Imagen", name: "img", widget: "image"}
+
+  - name: "sobre_mi"
+    label: "Sobre Amal"
+    delete: false
+    files:
+      - file: "sobre-mi.html"
+        label: "Biografía y Fotos"
+        name: "about_content"
+        fields:
+          - {label: "Título Principal", name: "title", widget: "string"}
+          - {label: "Saludo (Hola soy...)", name: "saludo", widget: "string"}
+          - {label: "Texto Biografía", name: "bio_body", widget: "markdown"}
+          - {label: "Tu Foto de Perfil", name: "profile_img", widget: "image"}
+
   - name: "blog"
-    label: "Blog (Artículos)"
+    label: "Blog (Publicaciones)"
     folder: "blog"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - {label: "Título", name: "title", widget: "string"}
+      - {label: "Título del Post", name: "title", widget: "string"}
       - {label: "Fecha", name: "date", widget: "datetime"}
-      - {label: "Imagen de Portada", name: "featured_image", widget: "image"}
-      - {label: "Cuerpo del artículo", name: "body", widget: "markdown"}
+      - {label: "Imagen de Portada", name: "image", widget: "image"}
+      - {label: "Contenido del Artículo", name: "body", widget: "markdown"}
 
-  - name: "paginas"
-    label: "Editar Páginas"
+  - name: "tienda"
+    label: "Tienda (Próximamente)"
     files:
-      - file: "index.html"
-        label: "Página de Inicio"
-        name: "home"
-        fields:
-          - {label: "Título Principal", name: "title_h1", widget: "string"}
-          - {label: "Subtítulo Hero", name: "hero_sub", widget: "text"}
-          - {label: "Texto Botón Principal", name: "cta_text", widget: "string"}
-          - {label: "Imagen de Fondo", name: "hero_bg", widget: "image"}
-      
-      - file: "sobre-mi.html"
-        label: "Página Sobre Mí"
-        name: "about"
-        fields:
-          - {label: "Título Página", name: "title", widget: "string"}
-          - {label: "Tu Texto de Presentación", name: "bio_text", widget: "markdown"}
-          - {label: "Tu Foto", name: "profile_img", widget: "image"}
-
       - file: "tienda.html"
-        label: "Página Tienda (Próximamente)"
-        name: "shop"
+        label: "Landing Tienda"
+        name: "shop_content"
         fields:
-          - {label: "Título Anuncio", name: "promo_title", widget: "string"}
-          - {label: "Descripción", name: "promo_desc", widget: "text"}
+          - {label: "Título Grande", name: "shop_h1", widget: "string"}
+          - {label: "Subtítulo", name: "shop_sub", widget: "text"}
+          - {label: "Lista de Productos que vienen", name: "items", widget: "list"}
