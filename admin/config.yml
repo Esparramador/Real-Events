@@ -10,53 +10,31 @@ collections:
     label: "Páginas Principales"
     files:
       - file: "index.html"
-        label: "Página de Inicio (Home)"
+        label: "Página de Inicio"
         name: "home"
         fields:
-          - {label: "Logo de la web", name: "logo_site", widget: "image"} # <--- NUEVO
-          - {label: "Sección Hero: Título", name: "title_h1", widget: "string"}
-          - {label: "Sección Hero: Título", name: "title_h1", widget: "string"}
-          - {label: "Sección Hero: Subtítulo", name: "hero_sub", widget: "text"}
-          - {label: "Sección Hero: Imagen de Fondo", name: "hero_bg", widget: "image"}
-          - {label: "Botón Principal: Texto", name: "cta_text", widget: "string"}
-          - {label: "Sobre Real Events: Título", name: "about_title", widget: "string"}
-          - {label: "Sobre Real Events: Descripción", name: "about_desc", widget: "markdown"}
+          - {label: "Logo de la Web", name: "logo_site", widget: "image"}
+          - {label: "Título Principal Hero", name: "title_h1", widget: "string"}
+          - {label: "Subtítulo Hero", name: "hero_sub", widget: "text"}
+          - {label: "Imagen de Fondo Hero", name: "hero_bg", widget: "image"}
+          - {label: "Texto del Botón", name: "cta_text", widget: "string"}
 
       - file: "sobre-mi.html"
-        label: "Página Sobre Mí"
-        name: "sobre_mi"
+        label: "Sobre Amal"
+        name: "about"
         fields:
-          - {label: "Título Principal", name: "title", widget: "string"}
+          - {label: "Título", name: "title", widget: "string"}
           - {label: "Tu Foto", name: "profile_img", widget: "image"}
-          - {label: "Historia/Biografía", name: "bio", widget: "markdown"}
+          - {label: "Tu Biografía", name: "bio", widget: "markdown"}
 
       - file: "servicios.html"
-        label: "Página de Servicios"
-        name: "servicios"
+        label: "Servicios"
+        name: "services"
         fields:
-          - {label: "Título de la Página", name: "title", widget: "string"}
-          - label: "Nuestros Servicios"
-            name: "servicios_list"
+          - {label: "Título Página", name: "title", widget: "string"}
+          - label: "Lista de Servicios"
+            name: "items"
             widget: "list"
             fields:
-              - {label: "Nombre del Servicio", name: "nombre", widget: "string"}
-              - {label: "Descripción Corta", name: "desc", widget: "text"}
-              - {label: "Imagen del Servicio", name: "img", widget: "image"}
-
-      - file: "tienda.html"
-        label: "Página Tienda"
-        name: "tienda"
-        fields:
-          - {label: "Título Próximamente", name: "shop_title", widget: "string"}
-          - {label: "Texto Informativo", name: "shop_text", widget: "text"}
-
-  - name: "blog"
-    label: "Blog (Añadir Artículos)"
-    folder: "blog"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - {label: "Título del Artículo", name: "title", widget: "string"}
-      - {label: "Fecha", name: "date", widget: "datetime"}
-      - {label: "Imagen de Portada", name: "image", widget: "image"}
-      - {label: "Cuerpo del Mensaje", name: "body", widget: "markdown"}
+              - {label: "Nombre", name: "name", widget: "string"}
+              - {label: "Descripción", name: "desc", widget: "text"}
