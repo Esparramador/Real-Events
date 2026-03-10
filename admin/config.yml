@@ -42,6 +42,24 @@ collections:
               - {label: "Descripción", name: "desc", widget: "text"}
               - {label: "Imagen", name: "img", widget: "image"}
 
+      # --- NUEVO: CONTACTO ---
+      - file: "contacto.json"
+        label: "Página de Contacto"
+        name: "contact"
+        fields:
+          - {label: "Título", name: "title", widget: "string"}
+          - {label: "Texto de introducción", name: "desc", widget: "markdown"}
+          - {label: "Email", name: "email", widget: "string"}
+          - {label: "Teléfono", name: "phone", widget: "string"}
+
+      # --- NUEVO: TIENDA ---
+      - file: "tienda.json"
+        label: "Página de Tienda"
+        name: "shop"
+        fields:
+          - {label: "Título Principal", name: "title", widget: "string"}
+          - {label: "Mensaje (Ej: Próximamente)", name: "message", widget: "markdown"}
+
   - name: "eventos"
     label: "Bodas y Eventos (Galería)"
     folder: "eventos"
