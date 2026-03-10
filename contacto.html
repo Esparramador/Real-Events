@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Real Events by Amal</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .form-group { margin-bottom: 1.5rem; text-align: left; }
+        label { display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem; }
+        input, select, textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-family: 'Montserrat', sans-serif; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">Real Events <span>by Amal</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="sobre-mi.html">Conoce a Amal</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="tienda.html">Tienda</a></li>
+            <li><a href="contacto.html" class="btn" style="background: var(--terracota);">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <section style="padding-top: 3rem;">
+        <h1 class="section-title">Hablemos de tu gran día</h1>
+        <p class="section-subtitle">Rellena este formulario para que podamos preparar una videollamada de valoración gratuita contigo.</p>
+
+        <form style="max-width: 600px; margin: 0 auto; background: var(--blanco); padding: 3rem; border-top: 5px solid var(--verde-salvia); box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+            <div class="form-group">
+                <label>Nombre(s)</label>
+                <input type="text" placeholder="Ej. Lucía y Matías" required>
+            </div>
+            <div style="display: flex; gap: 1rem;">
+                <div class="form-group" style="flex: 1;">
+                    <label>Email</label>
+                    <input type="email" required>
+                </div>
+                <div class="form-group" style="flex: 1;">
+                    <label>Teléfono</label>
+                    <input type="tel" required>
+                </div>
+            </div>
+            <div style="display: flex; gap: 1rem;">
+                <div class="form-group" style="flex: 1;">
+                    <label>Fecha Estimada</label>
+                    <input type="date">
+                </div>
+                <div class="form-group" style="flex: 1;">
+                    <label>Lugar de Celebración</label>
+                    <input type="text" placeholder="Finca, ciudad...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>¿Qué servicio te interesa?</label>
+                <select>
+                    <option>Organización Integral</option>
+                    <option>Wedding Design & Styling</option>
+                    <option>Coordinación del Día B</option>
+                    <option>Tienda / Merchandising</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Cuéntanos un poco sobre vuestra boda y cómo te la imaginas</label>
+                <textarea rows="4" placeholder="Estilo, colores, dudas..."></textarea>
+            </div>
+            <button type="submit" class="btn" style="width: 100%; font-size: 1rem; padding: 15px;">Enviar solicitud</button>
+        </form>
+    </section>
+</body>
+</html>
