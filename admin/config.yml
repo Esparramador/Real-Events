@@ -2,39 +2,41 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "images"
-public_folder: "/images"
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
 
 collections:
+  # 1. PÁGINAS ESTÁTICAS (Home, Sobre Mí, etc)
   - name: "paginas"
     label: "Páginas Principales"
     files:
-      - file: "index.html"
+      - file: "index.json" # Guardamos en JSON para que el HTML lo lea fácil
         label: "Página de Inicio"
         name: "home"
         fields:
-          - {label: "Logo de la Web", name: "logo_site", widget: "image"}
-          - {label: "Título Principal Hero", name: "title_h1", widget: "string"}
+          - {label: "Logo de la Web", name: "logo", widget: "image"}
+          - {label: "Título Principal Hero", name: "hero_title", widget: "string"}
           - {label: "Subtítulo Hero", name: "hero_sub", widget: "text"}
           - {label: "Imagen de Fondo Hero", name: "hero_bg", widget: "image"}
           - {label: "Texto del Botón", name: "cta_text", widget: "string"}
+          - {label: "Título Sección Esencia", name: "about_title", widget: "string"}
+          - {label: "Texto Nuestra Esencia", name: "about_desc", widget: "markdown"}
 
-      - file: "sobre-mi.html"
-        label: "Sobre Amal"
-        name: "about"
+  # 2. EL NUEVO GESTOR DE EVENTOS Y GALERÍAS
+  - name: "eventos"
+    label: "Bodas y Eventos (Galería)"
+    folder: "eventos"
+    create: true
+    slug: "{{year}}-{{month}}-{{slug}}"
+    fields:
+      - {label: "Nombre de los Novios / Evento", name: "title", widget: "string"}
+      - {label: "Fecha del Evento", name: "date", widget: "datetime"}
+      - {label: "Tipo de Evento", name: "tipo", widget: "select", options: ["Boda", "Preboda", "Baby Shower", "Corporativo", "Otro"]}
+      - {label: "Foto Principal (Portada)", name: "thumbnail", widget: "image"}
+      - label: "Galería de Fotos del Evento"
+        name: "galeria"
+        widget: "list"
         fields:
-          - {label: "Título", name: "title", widget: "string"}
-          - {label: "Tu Foto", name: "profile_img", widget: "image"}
-          - {label: "Tu Biografía", name: "bio", widget: "markdown"}
-
-      - file: "servicios.html"
-        label: "Servicios"
-        name: "services"
-        fields:
-          - {label: "Título Página", name: "title", widget: "string"}
-          - label: "Lista de Servicios"
-            name: "items"
-            widget: "list"
-            fields:
-              - {label: "Nombre", name: "name", widget: "string"}
-              - {label: "Descripción", name: "desc", widget: "text"}
+          - {label: "Añadir Foto", name: "foto", widget: "image"}
+          - {label: "Pie de foto (Opcional)", name: "alt", widget: "string", required: false}
+      - {label: "Historia / Descripción del evento", name: "body", widget: "markdown"}
