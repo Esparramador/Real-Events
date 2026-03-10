@@ -3,70 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto | Real Events by Amal</title>
+    <title>Contacto | Real Events</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .form-group { margin-bottom: 1.5rem; text-align: left; }
-        label { display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem; }
-        input, select, textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-family: 'Montserrat', sans-serif; }
-    </style>
 </head>
 <body>
     <nav>
-        <a href="index.html" class="logo">Real Events <span>by Amal</span></a>
+        <a href="index.html" class="logo-link"><img src="logo.png" alt="Logo" class="logo-img"></a>
         <ul class="nav-links">
             <li><a href="index.html">Inicio</a></li>
-            <li><a href="sobre-mi.html">Conoce a Amal</a></li>
+            <li><a href="sobre-mi.html">Sobre Amal</a></li>
             <li><a href="servicios.html">Servicios</a></li>
-            <li><a href="tienda.html">Tienda</a></li>
-            <li><a href="contacto.html" class="btn" style="background: var(--terracota);">Contacto</a></li>
+            <li><a href="portfolio.html">Bodas Reales</a></li>
+            <li><a href="contacto.html" class="btn">Contacto</a></li>
         </ul>
     </nav>
 
-    <section style="padding-top: 3rem;">
-        <h1 class="section-title">Hablemos de tu gran día</h1>
-        <p class="section-subtitle">Rellena este formulario para que podamos preparar una videollamada de valoración gratuita contigo.</p>
-
-        <form style="max-width: 600px; margin: 0 auto; background: var(--blanco); padding: 3rem; border-top: 5px solid var(--verde-salvia); box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
-            <div class="form-group">
-                <label>Nombre(s)</label>
-                <input type="text" placeholder="Ej. Lucía y Matías" required>
-            </div>
-            <div style="display: flex; gap: 1rem;">
-                <div class="form-group" style="flex: 1;">
-                    <label>Email</label>
-                    <input type="email" required>
-                </div>
-                <div class="form-group" style="flex: 1;">
-                    <label>Teléfono</label>
-                    <input type="tel" required>
-                </div>
-            </div>
-            <div style="display: flex; gap: 1rem;">
-                <div class="form-group" style="flex: 1;">
-                    <label>Fecha Estimada</label>
-                    <input type="date">
-                </div>
-                <div class="form-group" style="flex: 1;">
-                    <label>Lugar de Celebración</label>
-                    <input type="text" placeholder="Finca, ciudad...">
-                </div>
-            </div>
-            <div class="form-group">
-                <label>¿Qué servicio te interesa?</label>
-                <select>
-                    <option>Organización Integral</option>
-                    <option>Wedding Design & Styling</option>
-                    <option>Coordinación del Día B</option>
-                    <option>Tienda / Merchandising</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Cuéntanos un poco sobre vuestra boda y cómo te la imaginas</label>
-                <textarea rows="4" placeholder="Estilo, colores, dudas..."></textarea>
-            </div>
-            <button type="submit" class="btn" style="width: 100%; font-size: 1rem; padding: 15px;">Enviar solicitud</button>
-        </form>
+    <section style="padding: 5rem 5%; text-align: center; min-height: 60vh;">
+        <h1 id="page-title" style="font-family: 'Playfair Display', serif; color: #C87A61;">Cargando...</h1>
+        <div id="contact-desc" style="max-width: 600px; margin: 1rem auto; color: #555;"></div>
+        
+        <div style="margin-top: 3rem; background: #FCFBF9; padding: 2rem; border-radius: 8px; display: inline-block;">
+            <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>Email:</strong> <a id="contact-email" href="#" style="color: #9CA986; text-decoration: none;">Cargando...</a></p>
+            <p style="font-size: 1.2rem;"><strong>Teléfono:</strong> <span id="contact-phone">Cargando...</span></p>
+        </div>
     </section>
+
+    <footer>
+        <h2 class="footer-brand">Real Events</h2>
+        <p class="footer-byline">by Amal</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        fetch('contacto.json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('page-title').innerText = data.title;
+                document.getElementById('contact-desc').innerHTML = marked.parse(data.desc || '');
+                document.getElementById('contact-email').innerText = data.email;
+                document.getElementById('contact-email').href = "mailto:" + data.email;
+                document.getElementById('contact-phone').innerText = data.phone;
+            })
+            .catch(error => console.log('Publica la página de Contacto en el admin para verla.'));
+    </script>
 </body>
 </html>
