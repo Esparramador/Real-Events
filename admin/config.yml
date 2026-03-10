@@ -13,6 +13,8 @@ collections:
         label: "Página de Inicio (Home)"
         name: "home"
         fields:
+          - {label: "Logo de la web", name: "logo_site", widget: "image"} # <--- NUEVO
+          - {label: "Sección Hero: Título", name: "title_h1", widget: "string"}
           - {label: "Sección Hero: Título", name: "title_h1", widget: "string"}
           - {label: "Sección Hero: Subtítulo", name: "hero_sub", widget: "text"}
           - {label: "Sección Hero: Imagen de Fondo", name: "hero_bg", widget: "image"}
