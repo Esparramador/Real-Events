@@ -6,11 +6,10 @@ media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
-  # 1. PÁGINAS ESTÁTICAS (Home, Sobre Mí, etc)
   - name: "paginas"
     label: "Páginas Principales"
     files:
-      - file: "index.json" # Guardamos en JSON para que el HTML lo lea fácil
+      - file: "index.json"
         label: "Página de Inicio"
         name: "home"
         fields:
@@ -22,7 +21,27 @@ collections:
           - {label: "Título Sección Esencia", name: "about_title", widget: "string"}
           - {label: "Texto Nuestra Esencia", name: "about_desc", widget: "markdown"}
 
-  # 2. EL NUEVO GESTOR DE EVENTOS Y GALERÍAS
+      - file: "sobre-mi.json"
+        label: "Sobre Amal"
+        name: "about"
+        fields:
+          - {label: "Título", name: "title", widget: "string"}
+          - {label: "Tu Foto", name: "profile_img", widget: "image"}
+          - {label: "Tu Biografía", name: "bio", widget: "markdown"}
+
+      - file: "servicios.json"
+        label: "Servicios"
+        name: "services"
+        fields:
+          - {label: "Título Página", name: "title", widget: "string"}
+          - label: "Lista de Servicios"
+            name: "servicios_list"
+            widget: "list"
+            fields:
+              - {label: "Nombre", name: "nombre", widget: "string"}
+              - {label: "Descripción", name: "desc", widget: "text"}
+              - {label: "Imagen", name: "img", widget: "image"}
+
   - name: "eventos"
     label: "Bodas y Eventos (Galería)"
     folder: "eventos"
@@ -30,13 +49,13 @@ collections:
     slug: "{{year}}-{{month}}-{{slug}}"
     fields:
       - {label: "Nombre de los Novios / Evento", name: "title", widget: "string"}
-      - {label: "Fecha del Evento", name: "date", widget: "datetime"}
-      - {label: "Tipo de Evento", name: "tipo", widget: "select", options: ["Boda", "Preboda", "Baby Shower", "Corporativo", "Otro"]}
-      - {label: "Foto Principal (Portada)", name: "thumbnail", widget: "image"}
-      - label: "Galería de Fotos del Evento"
+      - {label: "Fecha", name: "date", widget: "datetime"}
+      - {label: "Tipo", name: "tipo", widget: "select", options: ["Boda", "Preboda", "Baby Shower", "Corporativo", "Otro"]}
+      - {label: "Foto Principal", name: "thumbnail", widget: "image"}
+      - label: "Galería de Fotos"
         name: "galeria"
         widget: "list"
         fields:
-          - {label: "Añadir Foto", name: "foto", widget: "image"}
+          - {label: "Foto", name: "foto", widget: "image"}
           - {label: "Pie de foto (Opcional)", name: "alt", widget: "string", required: false}
-      - {label: "Historia / Descripción del evento", name: "body", widget: "markdown"}
+      - {label: "Descripción", name: "body", widget: "markdown"}
