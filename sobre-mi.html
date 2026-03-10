@@ -3,48 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conoce a Amal | Real Events</title>
+    <title>Sobre Amal | Real Events</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav>
-        <a href="index.html" class="logo">Real Events <span>by Amal</span></a>
+        <a href="index.html" class="logo-link"><img src="logo.png" alt="Logo" class="logo-img"></a>
         <ul class="nav-links">
             <li><a href="index.html">Inicio</a></li>
-            <li><a href="sobre-mi.html" style="color: var(--verde-salvia);">Conoce a Amal</a></li>
+            <li><a href="sobre-mi.html">Sobre Amal</a></li>
             <li><a href="servicios.html">Servicios</a></li>
-            <li><a href="tienda.html">Tienda</a></li>
+            <li><a href="portfolio.html">Bodas Reales</a></li>
             <li><a href="contacto.html" class="btn">Contacto</a></li>
         </ul>
     </nav>
 
-    <section style="padding-top: 2rem;">
-        <h1 class="section-title">El alma detrás de Real Events</h1>
-        <div style="display: flex; flex-wrap: wrap; gap: 4rem; margin-top: 3rem; text-align: left; align-items: center;">
-            <div style="flex: 1; min-width: 300px; background-color: #EFEFEF; height: 500px; border-radius: 8px;">
-                <p style="text-align:center; padding-top:230px; color:#999;">[Foto de Amal sonriendo]</p>
-            </div>
-            <div style="flex: 1; min-width: 300px;">
-                <h2 style="font-size: 2rem; margin-bottom: 1rem;">¡Hola! Soy Amal</h2>
-                <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">La persona que se asegurará de que el día de tu boda sea exactamente como lo soñaste.</p>
-                <p style="margin-bottom: 1.5rem; color: #555;">Para mí, ser Wedding Planner & Designer va mucho más allá de coordinar proveedores. Se trata de escucharos, de entender vuestra esencia y de plasmarla en cada rincón. Fundé Real Events con la misión de democratizar el estilo: crear bodas con un diseño de revista, cuidando cada detalle estético y logístico, sin perder de vista vuestro presupuesto.</p>
-                <p style="color: #555;">La diferencia entre un evento bonito y uno inolvidable es el cuidado que le ponemos. Y en Real Events, el amor por los detalles lo es todo.</p>
-            </div>
-        </div>
+    <section class="about-page" style="padding: 5rem 5%; text-align: center;">
+        <h1 id="page-title">Cargando...</h1>
+        <img id="profile-img" src="" alt="Amal" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin: 2rem auto; display: none;">
+        <div id="bio-content" style="max-width: 800px; margin: 0 auto; text-align: left; line-height: 1.8;"></div>
     </section>
 
-    <section style="background-color: var(--verde-salvia); color: var(--blanco);">
-        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 3rem;">Lo que dicen nuestras parejas</h2>
-        <div class="servicios-grid">
-            <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 8px;">
-                <p style="font-style: italic; margin-bottom: 1rem;">"Acompañados en cada decisión. Amal hizo que el proceso fuera mágico."</p>
-                <h4>— Lucía Cordero</h4>
-            </div>
-            <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 8px;">
-                <p style="font-style: italic; margin-bottom: 1rem;">"Impecable coordinación. Pudimos disfrutar de nuestro día sin mirar el reloj."</p>
-                <h4>— Matías Hernández</h4>
-            </div>
-        </div>
-    </section>
+    <footer>
+        <h2 class="footer-brand">Real Events</h2>
+        <p class="footer-byline">by Amal</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        fetch('sobre-mi.json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('page-title').innerText = data.title;
+                if(data.profile_img) {
+                    document.getElementById('profile-img').src = data.profile_img;
+                    document.getElementById('profile-img').style.display = 'block';
+                }
+                document.getElementById('bio-content').innerHTML = marked.parse(data.bio);
+            })
+            .catch(error => console.log('Debes publicar la página desde el panel de admin primero.'));
+    </script>
 </body>
 </html>
